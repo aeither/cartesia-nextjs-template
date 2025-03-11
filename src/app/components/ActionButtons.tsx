@@ -16,7 +16,7 @@ export default function ActionButtons({
       <button
         type="submit"
         disabled={isPlaying}
-        className="flex-1 bg-blue-600 text-white py-2 px-4 rounded shadow hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+        className="flex-1 bg-blue-600 text-white py-3 px-4 rounded shadow-md hover:bg-blue-700 transition-colors disabled:bg-zinc-700 disabled:text-zinc-400 disabled:cursor-not-allowed"
       >
         {isPlaying ? "Speaking..." : "Speak"}
       </button>
@@ -25,7 +25,7 @@ export default function ActionButtons({
         <button
           type="button"
           onClick={onDownload}
-          className="bg-green-600 text-white py-2 px-5 rounded shadow hover:bg-green-700 transition-colors"
+          className="bg-green-600 text-white py-3 px-5 rounded shadow-md hover:bg-green-700 transition-colors"
         >
           Download
         </button>

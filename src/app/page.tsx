@@ -29,47 +29,49 @@ export default function Home() {
 	};
 
 	return (
-		<div className="container p-4 mx-auto max-w-3xl">
-			<h1 className="text-2xl font-bold mb-6">Cartesia TTS Example</h1>
-			<form onSubmit={handleSubmit} className="space-y-4">
-				<div className="grid grid-cols-2 gap-4">
-					<ModelSelector 
-						selectedModel={selectedModel}
-						setSelectedModel={setSelectedModel}
+		<div className="min-h-screen bg-zinc-900 text-white">
+			<div className="container p-6 mx-auto max-w-4xl">
+				<h1 className="text-2xl font-bold mb-8 text-center">Cartesia TTS Example</h1>
+				<form onSubmit={handleSubmit} className="space-y-5">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<ModelSelector 
+							selectedModel={selectedModel}
+							setSelectedModel={setSelectedModel}
+							disabled={state.isPlaying}
+						/>
+						<LanguageSelector 
+							selectedLanguage={selectedLanguage}
+							setSelectedLanguage={setSelectedLanguage}
+							disabled={state.isPlaying}
+						/>
+					</div>
+
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<SpeedSelector
+							selectedSpeed={selectedSpeed}
+							setSelectedSpeed={setSelectedSpeed}
+							disabled={state.isPlaying}
+						/>
+						<div className="hidden md:block" />
+					</div>
+
+					<EmotionControls disabled={state.isPlaying} />
+					
+					<FormattingTips showTips={showTips} />
+					
+					<TextInput 
+						showTips={showTips}
+						setShowTips={setShowTips}
 						disabled={state.isPlaying}
 					/>
-					<LanguageSelector 
-						selectedLanguage={selectedLanguage}
-						setSelectedLanguage={setSelectedLanguage}
-						disabled={state.isPlaying}
+
+					<ActionButtons 
+						isPlaying={state.isPlaying}
+						hasAudio={!!state.audioBlob}
+						onDownload={handleDownload}
 					/>
-				</div>
-
-				<div className="grid grid-cols-2 gap-4">
-					<SpeedSelector
-						selectedSpeed={selectedSpeed}
-						setSelectedSpeed={setSelectedSpeed}
-						disabled={state.isPlaying}
-					/>
-					<div className="hidden sm:block" />
-				</div>
-
-				<EmotionControls disabled={state.isPlaying} />
-				
-				<FormattingTips showTips={showTips} />
-				
-				<TextInput 
-					showTips={showTips}
-					setShowTips={setShowTips}
-					disabled={state.isPlaying}
-				/>
-
-				<ActionButtons 
-					isPlaying={state.isPlaying}
-					hasAudio={!!state.audioBlob}
-					onDownload={handleDownload}
-				/>
-			</form>
+				</form>
+			</div>
 		</div>
 	);
 }

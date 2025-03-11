@@ -14,8 +14,8 @@ export default function SpeedSelector({
   disabled,
 }: SpeedSelectorProps) {
   return (
-    <div className="bg-white p-3 rounded border border-blue-200 shadow-sm">
-      <label htmlFor="speed" className="block text-sm font-medium mb-2 text-gray-700">
+    <div className="bg-zinc-800 p-4 rounded border border-zinc-700 shadow-md">
+      <label htmlFor="speed" className="block text-sm font-medium mb-2 text-zinc-300">
         Speaking Speed
       </label>
       <select
@@ -23,7 +23,7 @@ export default function SpeedSelector({
         name="speed"
         value={selectedSpeed}
         onChange={(e) => setSelectedSpeed(e.target.value)}
-        className="w-full p-2 border rounded bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        className="w-full p-2 border border-zinc-600 rounded bg-zinc-900 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         disabled={disabled}
       >
         {SPEEDS.map((speed) => (

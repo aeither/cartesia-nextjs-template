@@ -14,8 +14,8 @@ export default function ModelSelector({
   disabled,
 }: ModelSelectorProps) {
   return (
-    <div className="bg-white p-3 rounded border border-blue-200 shadow-sm">
-      <label htmlFor="model" className="block text-sm font-medium mb-2 text-gray-700">
+    <div className="bg-zinc-800 p-4 rounded border border-zinc-700 shadow-md">
+      <label htmlFor="model" className="block text-sm font-medium mb-2 text-zinc-300">
         Voice Model
       </label>
       <select
@@ -23,7 +23,7 @@ export default function ModelSelector({
         name="model"
         value={selectedModel}
         onChange={(e) => setSelectedModel(e.target.value)}
-        className="w-full p-2 border rounded bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        className="w-full p-2 border border-zinc-600 rounded bg-zinc-900 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         disabled={disabled}
       >
         {MODELS.map((model) => (

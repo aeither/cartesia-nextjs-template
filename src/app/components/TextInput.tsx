@@ -6,34 +6,33 @@ interface TextInputProps {
   disabled: boolean;
 }
 
-export default function TextInput({ 
-  showTips, 
-  setShowTips, 
-  disabled 
+export default function TextInput({
+  showTips,
+  setShowTips,
+  disabled,
 }: TextInputProps) {
   return (
-    <div>
-      <div className="flex justify-between items-center mb-1">
-        <label htmlFor="text" className="block text-sm font-medium">
+    <div className="space-y-3">
+      <div className="flex justify-between items-center">
+        <label htmlFor="text" className="block text-sm font-medium text-zinc-300">
           Text to Speak
         </label>
         <button
           type="button"
           onClick={() => setShowTips(!showTips)}
-          className="text-sm text-blue-500 hover:text-blue-700"
+          className="text-sm text-blue-400 hover:text-blue-300"
         >
-          {showTips ? "Hide Tips" : "Show Formatting Tips"}
+          {showTips ? "Hide Tips" : "Show Tips"}
         </button>
       </div>
-
       <textarea
         id="text"
         name="text"
+        rows={6}
+        className="w-full p-3 border border-zinc-600 rounded bg-zinc-900 text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        placeholder="Enter text to convert to speech..."
         required
-        rows={4}
-        className="w-full p-2 border rounded"
         disabled={disabled}
-        placeholder="Enter text to be spoken. Click 'Show Formatting Tips' for better results."
       />
     </div>
   );
