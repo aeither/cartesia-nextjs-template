@@ -2,13 +2,12 @@
 
 export async function speak(formData: FormData): Promise<ArrayBuffer | null> {
     const text = formData.get('text') as string;
+    const apiKey = process.env.CARTESIA_API_KEY;
 
     if (!text) {
         console.error("No text provided.");
         return null;
     }
-
-    const apiKey = process.env.CARTESIA_API_KEY;
 
     if (!apiKey) {
         console.error("Cartesia API key not found in environment variables.");
@@ -19,8 +18,7 @@ export async function speak(formData: FormData): Promise<ArrayBuffer | null> {
         const { CartesiaClient } = await import("@cartesia/cartesia-js");
         const cartesia = new CartesiaClient({ apiKey });
 
-        // Use bytes endpoint which returns a complete audio file
-        const audioBuffer = await cartesia.tts.bytes({
+        return await cartesia.tts.bytes({
             modelId: "sonic-2",
             transcript: text,
             voice: {
@@ -29,13 +27,11 @@ export async function speak(formData: FormData): Promise<ArrayBuffer | null> {
             },
             language: "en",
             outputFormat: {
-                container: "wav", // Use WAV format instead of raw
+                container: "wav",
                 sampleRate: 44100,
                 encoding: "pcm_f32le",
             },
         });
-
-        return audioBuffer;
     } catch (error) {
         console.error("Error during TTS:", error);
         return null;
