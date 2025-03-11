@@ -69,7 +69,7 @@ bun start
 
 ## Learn More
 
-- [Cartesia Documentation](https://docs.cartesia.io) - learn about Cartesia API features
+- [Cartesia Documentation](https://docs.cartesia.ai) - learn about Cartesia API features
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
 - [React Documentation](https://react.dev/) - learn about React
 
