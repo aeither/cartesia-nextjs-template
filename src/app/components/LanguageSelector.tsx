@@ -14,10 +14,10 @@ export default function LanguageSelector({
   disabled,
 }: LanguageSelectorProps) {
   return (
-    <div>
+    <div className="bg-white p-3 rounded border border-blue-200 shadow-sm">
       <label
         htmlFor="language"
-        className="block text-sm font-medium mb-1"
+        className="block text-sm font-medium mb-2 text-gray-700"
       >
         Language
       </label>
@@ -26,7 +26,7 @@ export default function LanguageSelector({
         name="language"
         value={selectedLanguage}
         onChange={(e) => setSelectedLanguage(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
         disabled={disabled}
       >
         {LANGUAGES.map((language) => (

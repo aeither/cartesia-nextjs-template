@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { speak } from "../actions";
+import { EMOTION_GROUPS } from "../constants";
 
 export interface AudioState {
   isPlaying: boolean;
@@ -41,14 +42,44 @@ export function useAudio() {
 
     try {
       const text = formData.get("text") as string;
+      
+      // Add model and language to formData
       formData.append("model", model);
       formData.append("language", language);
+      
+      // Process emotion selections
+      const selectedEmotions: string[] = [];
+      for (const group of EMOTION_GROUPS) {
+        const fieldName = `emotion${group.id.charAt(0).toUpperCase() + group.id.slice(1)}`;
+        const value = formData.get(fieldName) as string;
+        if (value) {
+          selectedEmotions.push(value);
+        }
+      }
+      
+      // If no emotions selected, use default (Positivity: High)
+      if (selectedEmotions.length === 0) {
+        selectedEmotions.push("positivity:high");
+      }
+      
+      // Get the speed setting
+      const speed = formData.get("speed") as string || "normal";
+      
+      // Create new FormData to ensure we have clean data
+      const processedFormData = new FormData();
+      processedFormData.append("text", text);
+      processedFormData.append("model", model);
+      processedFormData.append("language", language);
+      processedFormData.append("speed", speed);
+      for (const emotion of selectedEmotions) {
+        processedFormData.append("emotions", emotion);
+      }
 
-      const audioBuffer = await speak(formData);
+      const audioBuffer = await speak(processedFormData);
 
       if (audioBuffer) {
         // Convert ArrayBuffer to Blob
-        const blob = new Blob([audioBuffer], { type: "audio/wav" });
+        const blob = new Blob([audioBuffer], { type: "audio/mp3" });
         
         setState({
           isPlaying: true,
@@ -82,7 +113,7 @@ export function useAudio() {
     const filename = `${state.audioText
       .substring(0, 20)
       .replace(/[^a-z0-9]/gi, "_")
-      .toLowerCase()}_${model}_${language}.wav`;
+      .toLowerCase()}_${model}_${language}.mp3`;
 
     // Create a download link using the blob URL
     const url = URL.createObjectURL(state.audioBlob);

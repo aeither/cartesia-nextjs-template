@@ -1,16 +1,20 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import ActionButtons from "./components/ActionButtons";
 import FormattingTips from "./components/FormattingTips";
 import LanguageSelector from "./components/LanguageSelector";
 import ModelSelector from "./components/ModelSelector";
 import TextInput from "./components/TextInput";
+import SpeedSelector from "./components/SpeedSelector";
+import EmotionControls from "./components/EmotionControls";
 import { useAudio } from "./hooks/useAudio";
 
 export default function Home() {
 	const [selectedModel, setSelectedModel] = useState<string>("sonic-2");
 	const [selectedLanguage, setSelectedLanguage] = useState<string>("en");
+	const [selectedSpeed, setSelectedSpeed] = useState<string>("normal");
 	const [showTips, setShowTips] = useState<boolean>(false);
 	const { state, generateSpeech, downloadAudio } = useAudio();
 
@@ -41,6 +45,17 @@ export default function Home() {
 					/>
 				</div>
 
+				<div className="grid grid-cols-2 gap-4">
+					<SpeedSelector
+						selectedSpeed={selectedSpeed}
+						setSelectedSpeed={setSelectedSpeed}
+						disabled={state.isPlaying}
+					/>
+					<div className="hidden sm:block" />
+				</div>
+
+				<EmotionControls disabled={state.isPlaying} />
+				
 				<FormattingTips showTips={showTips} />
 				
 				<TextInput 

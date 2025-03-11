@@ -23,6 +23,74 @@ export const LANGUAGES = [
 	{ id: "tr", name: "Turkish" },
 ];
 
+// Emotion options for voice controls
+export const EMOTION_GROUPS = [
+	{
+		id: "positivity",
+		name: "Positivity",
+		options: [
+			{ id: "", name: "Not Selected" },
+			{ id: "positivity:lowest", name: "Lowest Positivity" },
+			{ id: "positivity:low", name: "Low Positivity" },
+			{ id: "positivity:high", name: "High Positivity" },
+			{ id: "positivity:highest", name: "Highest Positivity" },
+		],
+	},
+	{
+		id: "anger",
+		name: "Anger",
+		options: [
+			{ id: "", name: "Not Selected" },
+			{ id: "anger:lowest", name: "Lowest Anger" },
+			{ id: "anger:low", name: "Low Anger" },
+			{ id: "anger:high", name: "High Anger" },
+			{ id: "anger:highest", name: "Highest Anger" },
+		],
+	},
+	{
+		id: "surprise",
+		name: "Surprise",
+		options: [
+			{ id: "", name: "Not Selected" },
+			{ id: "surprise:lowest", name: "Lowest Surprise" },
+			{ id: "surprise:low", name: "Low Surprise" },
+			{ id: "surprise:high", name: "High Surprise" },
+			{ id: "surprise:highest", name: "Highest Surprise" },
+		],
+	},
+	{
+		id: "sadness",
+		name: "Sadness",
+		options: [
+			{ id: "", name: "Not Selected" },
+			{ id: "sadness:lowest", name: "Lowest Sadness" },
+			{ id: "sadness:low", name: "Low Sadness" },
+			{ id: "sadness:high", name: "High Sadness" },
+			{ id: "sadness:highest", name: "Highest Sadness" },
+		],
+	},
+	{
+		id: "curiosity",
+		name: "Curiosity",
+		options: [
+			{ id: "", name: "Not Selected" },
+			{ id: "curiosity:lowest", name: "Lowest Curiosity" },
+			{ id: "curiosity:low", name: "Low Curiosity" },
+			{ id: "curiosity:high", name: "High Curiosity" },
+			{ id: "curiosity:highest", name: "Highest Curiosity" },
+		],
+	},
+];
+
+// Speed options for voice controls
+export const SPEEDS = [
+	{ id: "slowest", name: "Slowest" },
+	{ id: "slow", name: "Slow" },
+	{ id: "normal", name: "Normal" },
+	{ id: "fast", name: "Fast" },
+	{ id: "fastest", name: "Fastest" },
+];
+
 // Formatting tips for better speech generation
 export const FORMATTING_TIPS = [
 	{
