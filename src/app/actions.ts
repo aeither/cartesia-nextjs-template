@@ -32,6 +32,10 @@ export async function speak(formData: FormData): Promise<ArrayBuffer | null> {
             voice: {
                 mode: "id",
                 id: "a0e99841-438c-4a64-b679-ae501e7d6091",
+                experimentalControls: {
+                    emotion: ["curiosity:highest"],
+                    speed: "normal",
+                }
             },
             language: language,
             outputFormat: {
